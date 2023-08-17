@@ -12,13 +12,6 @@ Em MacOs a aceleracão só é permitida com usa de GPUs AMD ou Apple Silicon com
   - [Accelerated Training - Hugging Face](https://huggingface.co/docs/accelerate/usage_guides/mps)
   - [Accelerated Pytorch Training on Mac](https://developer.apple.com/metal/pytorch/)
 
-**Utilize este link para selecionar os parâmetros de compatibilidade do seu sistema LOCAL**
-  - [Get Started Locally](https://pytorch.org/get-started/locally/)
-
-Copie o comando impresso na aba **"Run this command"** e utilize para instalar o PyTorch:
-> DESINSTALE QUALQUER OUTRA VERSÃO O PYTORCH INSTALADO ANTERIORMENTE PARA EVITAR PROBLEMAS DE CONFLITO ENTRE VERSÕES.
-
-![Alt text](image-1.png)
 ### Windows
 Para a versão Windows com CUDA 11.7 :
 
@@ -29,11 +22,11 @@ Faca download do CUDnn para a versão específica do CUDA escolhidos no link que
 
 Os arquivos baixados do CUDnn deverá ser extraidos para:
 
-Copy bin\cudnn*.dll to C:\Program Files\NVIDIA\CUDNN\v8.x\bin.
+Copy bin\cudnn*.dll para C:\Program Files\NVIDIA\CUDNN\v8.x\bin.
 
-Copy include\cudnn*.h to C:\Program Files\NVIDIA\CUDNN\v8.x\include.
+Copy include\cudnn*.h para C:\Program Files\NVIDIA\CUDNN\v8.x\include.
 
-Copy lib\cudnn*.lib to C:\Program Files\NVIDIA\CUDNN\v8.x\lib.
+Copy lib\cudnn*.lib para C:\Program Files\NVIDIA\CUDNN\v8.x\lib.
 
 2- [Download CUDnn](https://developer.nvidia.com/rdp/cudnn-download)
 
@@ -41,13 +34,53 @@ Copy lib\cudnn*.lib to C:\Program Files\NVIDIA\CUDNN\v8.x\lib.
 
 #### Passo 2 -- Configurando as variáveis de ambiente no Windows
 
+Procure no menu executar "Editar as variáveis de ambiente do sistema" e na aba Avançado procure o botão "Variáveis de ambiente..."
+
+Editar variáveis de ambiente do sistema >> Avançado >> Variáveis de ambiente...
+
+- Adicione às **VARIÁVEIS DE USUÁRIO** os caminhos nas variáveis **Path**:
+  
+  C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.x\bin
+
+  C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.x\extras\CUPTI\lib64
+
+  C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.x\include
+
+  C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.x\libnvvp
+
+  C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.x
+
+![Alt img](/.readme/alt_img.png)
+
+- Crie uma **VARIÁVEL DE USUÁRIO** e nas **VARIÁVEIS DO SISTEMA** chamada **CUDNN** e adicione os mesmos caminhos anteriormente adicionados na variável **Path:**
+
+![Alt img2](/.readme/alt_img2.png)
+
+- Adicione também os endereços a seguir na variável Path de **VARIÁVEL DO SISTEMA:**
+
+  C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.x\libnvvp
+
+  C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.x\bin
+
+![Alt img2]/.readme/(alt_img3.png)
+
+#### Passo 3 -- Instale a versão correta 
+
 Supomos assim que iremos instalar o PyTorch com a versão de CUDA 11.7:
 
+**Utilize este link para selecionar os parâmetros de compatibilidade do seu sistema LOCAL**
+  - [Get Started Locally](https://pytorch.org/get-started/locally/)
+
+Copie o comando impresso na aba **"Run this command"** e utilize para instalar o PyTorch:
+> DESINSTALE QUALQUER OUTRA VERSÃO O PYTORCH INSTALADO ANTERIORMENTE PARA EVITAR PROBLEMAS DE CONFLITO ENTRE VERSÕES.
+
+![Alt text](/.readme/image-1.png)
+
 ```python
-pip install torch torchvision torchaudio --index-url https://download/pytorch.org/whl/cu117
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu117
 ```
 
-
+Dessa forma verifique se está disponível para o uso!!
 
 ```python
 import torch
